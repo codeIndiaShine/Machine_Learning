@@ -72,9 +72,10 @@ public class CustomParser {
 		if (new CustomParser().returnFileType().contains("pdf")) {
 			parser = new PDFParser();
 
-			File pdfPropfile = new File("E:\\Documents\\pdfParser.properties");
-
-			FileInputStream fs = new FileInputStream(pdfPropfile);
+			
+			new PropertyReader("pdfParser.properties", "/parserconfiguration");
+			
+			FileInputStream fs = PropertyReader.in;
 			PDFParserConfig pdfParserConfig = new PDFParserConfig(fs);
 
 			((PDFParser) parser).setPDFParserConfig(pdfParserConfig);
