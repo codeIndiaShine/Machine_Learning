@@ -30,9 +30,17 @@ import net.sourceforge.tess4j.TesseractException;
 
 public class CustomParser {
 
-	static File file = new File("E:\\Documents\\sampleResume.pdf");
+	static File unprocessedFolder = new File("E:\\Documents\\resume_unprocessed");
+	
+	static File[] files = null;
+	
+	public CustomParser(){
+		if(unprocessedFolder.isDirectory()){
+			files = unprocessedFolder.listFiles();
+		}
+	}
 
-	private String returnFileType() throws IOException {
+	private String returnFileType(File file) throws IOException {
 		Tika tika = new Tika();
 
 		String documentType = tika.detect(file);
@@ -47,8 +55,10 @@ public class CustomParser {
 	 * @throws TikaException
 	 * @throws TesseractException
 	 */
-	private void parseDocument() throws IOException, SAXException, TikaException, TesseractException {
+	private void parseDocument(File file) throws IOException, SAXException, TikaException, TesseractException {
 
+		
+		
 		Parser parser = new AutoDetectParser();
 
 		BodyContentHandler handler = new BodyContentHandler();
@@ -59,7 +69,7 @@ public class CustomParser {
 		parser.parse(inputstream, handler, metadata, context);
 		System.out.println("\nmetadata :" + metadata);
 
-		File newMetaDataFile = new File("E:\\Documents\\metadata.txt");
+		File newMetaDataFile = new File("E:\\Documents\\metadata\\metadata"+file.getName()+".txt");
 		FileOutputStream fos = new FileOutputStream(newMetaDataFile);
 		for (String name : metadata.names()) {
 			System.out.println(name + " : " + metadata.get(name));
@@ -69,11 +79,11 @@ public class CustomParser {
 		}
 		fos.close();
 
-		if (new CustomParser().returnFileType().contains("pdf")) {
+		if (new CustomParser().returnFileType(file).contains("pdf") || new CustomParser().returnFileType(file).contains("jpeg")) {
 			parser = new PDFParser();
 
 			
-			new PropertyReader("pdfParser.properties", "/parserconfiguration");
+			new PropertyReader("pdfParser.properties", "/parserconfiguration/");
 			
 			FileInputStream fs = PropertyReader.in;
 			PDFParserConfig pdfParserConfig = new PDFParserConfig(fs);
@@ -84,21 +94,21 @@ public class CustomParser {
 			tesseract.setLanguage("eng");
 			tesseract.setPageSegMode(2);
 			tesseract.setOcrEngineMode(2);
-
+			
 			PDDocument document = PDDocument.load(file);
 			int noOfPages = document.getNumberOfPages();
 
 			
 			int i =0;
 			while (i < noOfPages) {
-				showImageWithSegments(i,tesseract,document);
+				showImageWithSegments(i,tesseract,document,file);
 				i++;
 			}
 			
 			document.close();
 			String content = tesseract.doOCR(file);
 
-			File newContentFile = new File("E:\\Documents\\resumeContentinTxt.txt");
+			File newContentFile = new File("E:\\Documents\\Processed_txt_resume\\resumeContentinTxt"+file.getName()+".txt");
 			FileOutputStream fosContent = new FileOutputStream(newContentFile);
 
 			//System.out.println("\ncontent from tesseract :" + content);
@@ -115,7 +125,11 @@ public class CustomParser {
 
 	public static void main(String[] args) throws IOException, SAXException, TikaException, TesseractException {
 		// TODO Auto-generated method stub
-		new CustomParser().parseDocument();
+		
+		CustomParser customParser = new CustomParser();
+		for(File file : files){
+			customParser.parseDocument(file);
+		}
 	}
 
 	/**
@@ -126,7 +140,7 @@ public class CustomParser {
 	 * @throws IOException
 	 * @throws TesseractException
 	 */
-	public void showImageWithSegments(int pageNumber, Tesseract tesseract, PDDocument document) throws IOException, TesseractException{
+	public void showImageWithSegments(int pageNumber, Tesseract tesseract, PDDocument document, File file) throws IOException, TesseractException{
 		PDFRenderer renderer = new PDFRenderer(document);
 		BufferedImage image = renderer.renderImage(pageNumber);
 
@@ -141,10 +155,6 @@ public class CustomParser {
 		
 		System.out.println(segmentList.size());
 		ImageIO.write(image, "JPEG",
-				new File("E:\\Documents\\sampleResumePDFtoImage"+pageNumber+".JPEG"));
-
-		
-		
-	
+				new File("E:\\Documents\\segmentedImages\\sampleResumePDFtoImage"+pageNumber+"+"+file.getName()+".JPEG"));
 	}
 }

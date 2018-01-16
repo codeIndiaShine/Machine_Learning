@@ -65,23 +65,23 @@ public class PropertyReader {
         logger.info("Getting key");
         return configProp.getProperty(key);
     }
-
-    /**
+/*
+    *//**
      * Append field name with message
      * 
      * @param key
      * @param fieldName
      * @return
-     */
+     *//*
     public String getProperty(String key, String fieldName) {
         return MessageFormat.format(configProp.getProperty(key), fieldName);
     }
 
-    /**
+    *//**
      * Get all keys and their values from properties file
      * @return Map<String, Object>
-     */
+     *//*
     public Map<String, Object> getPropertyMap() {
         return new HashMap<>((Map) configProp);
-    }
+    }*/
 }
