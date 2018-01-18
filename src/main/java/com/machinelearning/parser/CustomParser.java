@@ -1,4 +1,4 @@
-package main.java.com.machinelearning.parser;
+package com.machinelearning.parser;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -55,7 +55,7 @@ public class CustomParser {
 	 * @throws TikaException
 	 * @throws TesseractException
 	 */
-	private void parseDocument(File file) throws IOException, SAXException, TikaException, TesseractException {
+	private void parseDocumentDefaultTika(File file) throws IOException, SAXException, TikaException, TesseractException {
 
 		
 		
@@ -67,6 +67,8 @@ public class CustomParser {
 
 		ParseContext context = new ParseContext();
 		parser.parse(inputstream, handler, metadata, context);
+		
+		
 		System.out.println("\nmetadata :" + metadata);
 
 		File newMetaDataFile = new File("E:\\Documents\\metadata\\metadata"+file.getName()+".txt");
@@ -79,6 +81,7 @@ public class CustomParser {
 		}
 		fos.close();
 
+		String content = null;
 		if (new CustomParser().returnFileType(file).contains("pdf") || new CustomParser().returnFileType(file).contains("jpeg")) {
 			parser = new PDFParser();
 
@@ -106,21 +109,87 @@ public class CustomParser {
 			}
 			
 			document.close();
-			String content = tesseract.doOCR(file);
+			content = tesseract.doOCR(file);
 
-			File newContentFile = new File("E:\\Documents\\Processed_txt_resume\\resumeContentinTxt"+file.getName()+".txt");
-			FileOutputStream fosContent = new FileOutputStream(newContentFile);
-
-			//System.out.println("\ncontent from tesseract :" + content);
-			String str = content;
-
-			fosContent.write(str.getBytes());
-
-			fosContent.close();
+			
 		} else {
-
-			System.out.println("\ncontent :" + handler.toString());
+			content = handler.toString();					
 		}
+		
+		File newContentFile = new File("E:\\Documents\\Processed_txt_resume\\resumeContentinTxt"+file.getName()+".txt");
+		FileOutputStream fosContent = new FileOutputStream(newContentFile);
+
+		//System.out.println("\ncontent from tesseract :" + content);
+		String str = content;
+
+		fosContent.write(str.getBytes());
+
+		fosContent.close();
+	}
+	
+	/** method to parse word document and give output in both HTML and string format
+	 * @param file
+	 * @throws IOException
+	 * @throws SAXException
+	 * @throws TikaException
+	 */
+	public void parseDocumentCustomTika(File file) throws IOException, SAXException, TikaException{
+		ContentHandlerCustom contentHandlerCustom = new ContentHandlerCustom(file);
+		String content = null;
+		content = contentHandlerCustom.parseToPlainText();
+		
+		File newContentFile = new File("E:\\Documents\\Processed_txt_resume\\parseToPlainText"+file.getName()+".txt");
+		FileOutputStream fosContent = new FileOutputStream(newContentFile);
+
+		//System.out.println("\ncontent from tesseract :" + content);
+		String str = content;
+
+		fosContent.write(str.getBytes());
+
+		fosContent.close();
+		
+/*		**********************************
+*/		
+		content = contentHandlerCustom.parseToHTML();
+		
+		 newContentFile = new File("E:\\Documents\\Processed_txt_resume\\parseToHTML"+file.getName()+".txt");
+		 fosContent = new FileOutputStream(newContentFile);
+
+		//System.out.println("\ncontent from tesseract :" + content);
+		 str = content;
+
+		fosContent.write(str.getBytes());
+
+		fosContent.close();
+		
+/*		***********************************
+*/		//System.out.println(contentHandlerCustom.parseBodyToHTML());
+		List<String> contentList = contentHandlerCustom.parseToPlainTextChunks();
+		
+		newContentFile = new File("E:\\Documents\\Processed_txt_resume\\parseToPlainTextChunks"+file.getName()+".txt");
+		 fosContent = new FileOutputStream(newContentFile);
+
+		//System.out.println("\ncontent from tesseract :" + content);
+		 for(String contents : contentList){
+		 str = "\n" + contents;
+		 }
+		fosContent.write(str.getBytes());
+
+		fosContent.close();
+		
+/*		************************************/
+		content = contentHandlerCustom.parseOnePartToHTML();
+		
+		 newContentFile = new File("E:\\Documents\\Processed_txt_resume\\parseOnePartToHTML"+file.getName()+".txt");
+		 fosContent = new FileOutputStream(newContentFile);
+
+		//System.out.println("\ncontent from tesseract :" + content);
+		 str = content;
+
+		fosContent.write(str.getBytes());
+
+		fosContent.close();
+		
 	}
 
 	public static void main(String[] args) throws IOException, SAXException, TikaException, TesseractException {
@@ -128,7 +197,9 @@ public class CustomParser {
 		
 		CustomParser customParser = new CustomParser();
 		for(File file : files){
-			customParser.parseDocument(file);
+			//customParser.parseDocumentDefaultTika(file);
+			
+			customParser.parseDocumentCustomTika(file);
 		}
 	}
 
