@@ -31,11 +31,11 @@ import net.sourceforge.tess4j.TesseractException;
 public class CustomParser {
 
 	static File unprocessedFolder = new File("E:\\Documents\\resume_unprocessed");
-	
+
 	static File[] files = null;
-	
-	public CustomParser(){
-		if(unprocessedFolder.isDirectory()){
+
+	public CustomParser() {
+		if (unprocessedFolder.isDirectory()) {
 			files = unprocessedFolder.listFiles();
 		}
 	}
@@ -49,16 +49,17 @@ public class CustomParser {
 		return documentType;
 	}
 
-	/**Method to perform segmentation and OCR on all file types
+	/**
+	 * Method to perform segmentation and OCR on all file types
+	 * 
 	 * @throws IOException
 	 * @throws SAXException
 	 * @throws TikaException
 	 * @throws TesseractException
 	 */
-	private void parseDocumentDefaultTika(File file) throws IOException, SAXException, TikaException, TesseractException {
+	private void parseDocumentDefaultTika(File file)
+			throws IOException, SAXException, TikaException, TesseractException {
 
-		
-		
 		Parser parser = new AutoDetectParser();
 
 		BodyContentHandler handler = new BodyContentHandler();
@@ -67,11 +68,10 @@ public class CustomParser {
 
 		ParseContext context = new ParseContext();
 		parser.parse(inputstream, handler, metadata, context);
-		
-		
+
 		System.out.println("\nmetadata :" + metadata);
 
-		File newMetaDataFile = new File("E:\\Documents\\metadata\\metadata"+file.getName()+".txt");
+		File newMetaDataFile = new File("E:\\Documents\\metadata\\metadata" + file.getName() + ".txt");
 		FileOutputStream fos = new FileOutputStream(newMetaDataFile);
 		for (String name : metadata.names()) {
 			System.out.println(name + " : " + metadata.get(name));
@@ -82,12 +82,12 @@ public class CustomParser {
 		fos.close();
 
 		String content = null;
-		if (new CustomParser().returnFileType(file).contains("pdf") || new CustomParser().returnFileType(file).contains("jpeg")) {
+		if (new CustomParser().returnFileType(file).contains("pdf")
+				|| new CustomParser().returnFileType(file).contains("jpeg")) {
 			parser = new PDFParser();
 
-			
 			new PropertyReader("pdfParser.properties", "/parserconfiguration/");
-			
+
 			FileInputStream fs = PropertyReader.in;
 			PDFParserConfig pdfParserConfig = new PDFParserConfig(fs);
 
@@ -97,121 +97,119 @@ public class CustomParser {
 			tesseract.setLanguage("eng");
 			tesseract.setPageSegMode(2);
 			tesseract.setOcrEngineMode(2);
-			
+
 			PDDocument document = PDDocument.load(file);
 			int noOfPages = document.getNumberOfPages();
 
-			
-			int i =0;
+			int i = 0;
 			while (i < noOfPages) {
-				showImageWithSegments(i,tesseract,document,file);
+				showImageWithSegments(i, tesseract, document, file);
 				i++;
 			}
-			
+
 			document.close();
 			content = tesseract.doOCR(file);
 
-			
 		} else {
-			content = handler.toString();					
+			content = handler.toString();
 		}
-		
-		File newContentFile = new File("E:\\Documents\\Processed_txt_resume\\resumeContentinTxt"+file.getName()+".txt");
+
+		File newContentFile = new File(
+				"E:\\Documents\\Processed_txt_resume\\resumeContentinTxt" + file.getName() + ".txt");
 		FileOutputStream fosContent = new FileOutputStream(newContentFile);
 
-		//System.out.println("\ncontent from tesseract :" + content);
+		// System.out.println("\ncontent from tesseract :" + content);
 		String str = content;
 
 		fosContent.write(str.getBytes());
 
 		fosContent.close();
 	}
-	
-	/** method to parse word document and give output in both HTML and string format
+
+	/**
+	 * method to parse word document and give output in both HTML and string
+	 * format
+	 * 
 	 * @param file
 	 * @throws IOException
 	 * @throws SAXException
 	 * @throws TikaException
 	 */
-	public void parseDocumentCustomTika(File file) throws IOException, SAXException, TikaException{
+	public void parseDocumentCustomTika(File file) throws IOException, SAXException, TikaException {
 		ContentHandlerCustom contentHandlerCustom = new ContentHandlerCustom(file);
 		String content = null;
-		content = contentHandlerCustom.parseToPlainText();
-		
-		File newContentFile = new File("E:\\Documents\\Processed_txt_resume\\parseToPlainText"+file.getName()+".txt");
-		FileOutputStream fosContent = new FileOutputStream(newContentFile);
+		// content = contentHandlerCustom.parseToPlainText();
 
-		//System.out.println("\ncontent from tesseract :" + content);
+		File newContentFile = null;
+		/*
+		 * newContentFile = new
+		 * File("E:\\Documents\\Processed_txt_resume\\parseToPlainText"+file.
+		 * getName()+".txt");
+		 */ FileOutputStream fosContent = null;
+		/*
+		 * fosContent = new FileOutputStream(newContentFile);
+		 */
+		// System.out.println("\ncontent from tesseract :" + content);
 		String str = content;
 
-		fosContent.write(str.getBytes());
+		/*
+		 * fosContent.write(str.getBytes());
+		 * 
+		 * fosContent.close();
+		 */
 
-		fosContent.close();
-		
-/*		**********************************
-*/		
+		/*
+		 * **********************************
+		 */
 		content = contentHandlerCustom.parseToHTML();
 		
-		 newContentFile = new File("E:\\Documents\\Processed_txt_resume\\parseToHTML"+file.getName()+".txt");
-		 fosContent = new FileOutputStream(newContentFile);
 
-		//System.out.println("\ncontent from tesseract :" + content);
-		 str = content;
+		newContentFile = new File("E:\\Documents\\Processed_txt_resume\\parseToHTML" + file.getName() + ".html");
+		fosContent = new FileOutputStream(newContentFile);
 
-		fosContent.write(str.getBytes());
-
-		fosContent.close();
-		
-/*		***********************************
-*/		//System.out.println(contentHandlerCustom.parseBodyToHTML());
-		List<String> contentList = contentHandlerCustom.parseToPlainTextChunks();
-		
-		newContentFile = new File("E:\\Documents\\Processed_txt_resume\\parseToPlainTextChunks"+file.getName()+".txt");
-		 fosContent = new FileOutputStream(newContentFile);
-
-		//System.out.println("\ncontent from tesseract :" + content);
-		 for(String contents : contentList){
-		 str = "\n" + contents;
-		 }
-		fosContent.write(str.getBytes());
-
-		fosContent.close();
-		
-/*		************************************/
-		content = contentHandlerCustom.parseOnePartToHTML();
-		
-		 newContentFile = new File("E:\\Documents\\Processed_txt_resume\\parseOnePartToHTML"+file.getName()+".txt");
-		 fosContent = new FileOutputStream(newContentFile);
-
-		//System.out.println("\ncontent from tesseract :" + content);
-		 str = content;
+		// System.out.println("\ncontent from tesseract :" + content);
+		str = content.replaceAll("\t", "");;
 
 		fosContent.write(str.getBytes());
 
 		fosContent.close();
 		
+		content = new DOMParser().parseHTMLfromDOM(newContentFile);
+		
+		newContentFile = new File("E:\\Documents\\Processed_txt_resume\\parsedHTML" + file.getName() + ".txt");
+		fosContent = new FileOutputStream(newContentFile);
+
+		// System.out.println("\ncontent from tesseract :" + content);
+		str = content;
+
+		fosContent.write(str.getBytes());
+
+		fosContent.close();
+
 	}
 
 	public static void main(String[] args) throws IOException, SAXException, TikaException, TesseractException {
 		// TODO Auto-generated method stub
-		
+
 		CustomParser customParser = new CustomParser();
-		for(File file : files){
-			//customParser.parseDocumentDefaultTika(file);
-			
+		for (File file : files) {
+			// customParser.parseDocumentDefaultTika(file);
+
 			customParser.parseDocumentCustomTika(file);
 		}
 	}
 
 	/**
 	 * This method will convert every page into image with highlighted segments.
+	 * 
 	 * @param pageNumber
 	 * @param tesseract
 	 * @param document
 	 * @throws IOException
 	 * @throws TesseractException
 	 */
-	public void showImageWithSegments(int pageNumber, Tesseract tesseract, PDDocument document, File file) throws IOException, TesseractException{
+	public void showImageWithSegments(int pageNumber, Tesseract tesseract, PDDocument document, File file)
+			throws IOException, TesseractException {
 		PDFRenderer renderer = new PDFRenderer(document);
 		BufferedImage image = renderer.renderImage(pageNumber);
 
@@ -223,9 +221,9 @@ public class CustomParser {
 			g2D.drawRect((int) rect.getX(), (int) rect.getY(), (int) rect.getWidth(), (int) rect.getHeight());
 
 		}
-		
+
 		System.out.println(segmentList.size());
-		ImageIO.write(image, "JPEG",
-				new File("E:\\Documents\\segmentedImages\\sampleResumePDFtoImage"+pageNumber+"+"+file.getName()+".JPEG"));
+		ImageIO.write(image, "JPEG", new File("E:\\Documents\\segmentedImages\\sampleResumePDFtoImage" + pageNumber
+				+ "+" + file.getName() + ".JPEG"));
 	}
 }
