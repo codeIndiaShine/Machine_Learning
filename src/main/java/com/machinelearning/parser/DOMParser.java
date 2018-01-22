@@ -19,6 +19,18 @@ public class DOMParser {
 
 		String content = "\n**************************************************";
 		
+		Elements capitalElements = doc.getElementsByTag("p");
+		
+		//fecth heading within <p></p> and no further child nodes. Also all Capital letters checked  
+		for (Element element : capitalElements) {
+			if(element.childNodes().size()==1){
+				Node node = element.childNode(0);
+				if(node.toString().equals(node.toString().toUpperCase())){
+					content += "\n" + node.toString();
+				}
+			}
+		}
+		
 		Elements tableElements = doc.getElementsByTag("table");
 		
 		for (Element element : tableElements) {
@@ -35,6 +47,7 @@ public class DOMParser {
 
 		Elements elements = body.get(0).children();
 
+		//fetching heading from h1, h2, h3, h4, h5, h6 tags
 		for (Element element : elements) {
 
 			Elements bElements = element.getElementsByTag("h1");
@@ -67,6 +80,7 @@ public class DOMParser {
 				content += "\n" + element;
 			}
 			
+			//fetching heading from bold tags <p><b></b></p>
 			bElements = element.getElementsByTag("b");			
 			if (bElements.hasText() && bElements.parents().first().tagName().equals("p")) {
 				
@@ -79,7 +93,6 @@ public class DOMParser {
 						foundAnELementToRemove = true;
 						break;
 					}
-					
 				}
 				
 				if(foundAnELementToRemove)
