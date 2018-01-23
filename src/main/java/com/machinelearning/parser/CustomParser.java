@@ -118,7 +118,6 @@ public class CustomParser {
 				"E:\\Documents\\Processed_txt_resume\\resumeContentinTxt" + file.getName() + ".txt");
 		FileOutputStream fosContent = new FileOutputStream(newContentFile);
 
-		// System.out.println("\ncontent from tesseract :" + content);
 		String str = content;
 
 		fosContent.write(str.getBytes());
@@ -138,36 +137,18 @@ public class CustomParser {
 	public void parseDocumentCustomTika(File file) throws IOException, SAXException, TikaException {
 		ContentHandlerCustom contentHandlerCustom = new ContentHandlerCustom(file);
 		String content = null;
-		// content = contentHandlerCustom.parseToPlainText();
 
 		File newContentFile = null;
-		/*
-		 * newContentFile = new
-		 * File("E:\\Documents\\Processed_txt_resume\\parseToPlainText"+file.
-		 * getName()+".txt");
-		 */ FileOutputStream fosContent = null;
-		/*
-		 * fosContent = new FileOutputStream(newContentFile);
-		 */
-		// System.out.println("\ncontent from tesseract :" + content);
+		
+		FileOutputStream fosContent = null;
 		String str = content;
 
-		/*
-		 * fosContent.write(str.getBytes());
-		 * 
-		 * fosContent.close();
-		 */
-
-		/*
-		 * **********************************
-		 */
 		content = contentHandlerCustom.parseToHTML();
 		
 
 		newContentFile = new File("E:\\Documents\\Processed_txt_resume\\parseToHTML" + file.getName() + ".html");
 		fosContent = new FileOutputStream(newContentFile);
 
-		// System.out.println("\ncontent from tesseract :" + content);
 		str = content.replaceAll("\t", "");;
 
 		fosContent.write(str.getBytes());
@@ -179,7 +160,6 @@ public class CustomParser {
 		newContentFile = new File("E:\\Documents\\Processed_txt_resume\\parsedHTML" + file.getName() + ".txt");
 		fosContent = new FileOutputStream(newContentFile);
 
-		// System.out.println("\ncontent from tesseract :" + content);
 		str = content;
 
 		fosContent.write(str.getBytes());
