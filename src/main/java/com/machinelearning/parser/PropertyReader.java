@@ -1,12 +1,8 @@
-package main.java.com.machinelearning.parser;
+package com.machinelearning.parser;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.text.MessageFormat;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -65,23 +61,23 @@ public class PropertyReader {
         logger.info("Getting key");
         return configProp.getProperty(key);
     }
-
-    /**
+/*
+    *//**
      * Append field name with message
      * 
      * @param key
      * @param fieldName
      * @return
-     */
+     *//*
     public String getProperty(String key, String fieldName) {
         return MessageFormat.format(configProp.getProperty(key), fieldName);
     }
 
-    /**
+    *//**
      * Get all keys and their values from properties file
      * @return Map<String, Object>
-     */
+     *//*
     public Map<String, Object> getPropertyMap() {
         return new HashMap<>((Map) configProp);
-    }
+    }*/
 }
