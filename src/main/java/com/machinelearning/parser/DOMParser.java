@@ -15,7 +15,7 @@ public class DOMParser {
 
 		Document doc = Jsoup.parse(input, "UTF-8");
 
-		String content = "\n**************************************************";
+		String content = "";
 
 		//fetching elements in <table> tag
 		Elements tableElements = doc.getElementsByTag("table");

@@ -40,6 +40,9 @@ public class CustomParser {
 		}
 	}
 
+	public File[] getFileList(){
+		return files;
+	}
 	private String returnFileType(File file) throws IOException {
 		Tika tika = new Tika();
 
@@ -57,7 +60,7 @@ public class CustomParser {
 	 * @throws TikaException
 	 * @throws TesseractException
 	 */
-	private void parseDocumentDefaultTika(File file)
+	public void parseDocumentDefaultTika(File file)
 			throws IOException, SAXException, TikaException, TesseractException {
 
 		Parser parser = new AutoDetectParser();
@@ -166,17 +169,6 @@ public class CustomParser {
 
 		fosContent.close();
 
-	}
-
-	public static void main(String[] args) throws IOException, SAXException, TikaException, TesseractException {
-		// TODO Auto-generated method stub
-
-		CustomParser customParser = new CustomParser();
-		for (File file : files) {
-			// customParser.parseDocumentDefaultTika(file);
-
-			customParser.parseDocumentCustomTika(file);
-		}
 	}
 
 	/**
