@@ -1,0 +1,140 @@
+Skill
+skills
+skills:
+personal skills
+personalskills
+Technical skills:
+Software Proficiency:
+Software proficiency:
+Software proficiency
+Technical proficiency
+Technical exposure area
+Competency
+Competencies
+Expertise
+AreasofExpertise
+Expertisation
+educate
+education
+education:
+TRaining and seminar
+TRaining seminar
+AcademicQualifications
+Academic Qualification
+Academic Qualification:
+Academic Qualification:-
+Academic details
+Academic detail
+Academic details:
+Academic record
+Academic Credentials
+Academical Qualification
+Academic summary
+Academic summary
+Education qualification
+Educational qualification:
+Educational credentials
+Education credentials
+Professional qualification
+qualifications
+qualification
+Experience
+Experience:
+Working Experience
+Working Experience:
+Working Exprience
+Employment
+Employment details
+Employment brief
+Employment history
+Job details
+job history
+Professional organizations
+Professional organizations
+Professional work experience:
+Professional experience:
+Professional highlights
+Professional highlights
+Resume highlights
+Professional profile
+job experiences
+Area of interest
+interest area
+hobby
+hobbies
+hobbies and interest
+career
+objective
+Career Objective
+Careers objects
+strengths
+strengths
+internship
+internships
+extra-curricular activity
+extra-curricualtion
+extra curricular activities
+personal detail:
+personal details:
+personal detail
+personal details
+personal particulars
+personal data
+personal information
+achievements
+achievements && co-curricular activities
+achievement
+technology
+technologies
+technologies
+Ongoing Projects
+Projects
+Proj ects
+Accomplished projects
+Accomplish project
+Projects
+Significant Projects
+Project Details
+Project Details:
+summary
+summary
+overview
+overview
+Certifications
+Certification
+Certificates
+Certifications and achievements
+seminars
+seminars
+SUMMARY
+Technical proficiency
+Experience Summary
+Experience Details:
+Project: 1
+Duration: Oct? 2015 to till
+Technologies used:
+Project: 2
+Technologies used:
+Project: 3
+Technologies used:
+Project: 3
+Technologies used:
+Project: 4
+Technologies used:
+Project: 5
+Technologies used:
+Project: 6
+Technologies used
+Project: 7
+Client: Technology 9 Labs
+Project: 8
+Technologies used
+Academic Qualifications
+Professional Qualification
+Career Profile
+Awards and Achievements
+Skill Set
+Key Projects
+Areas of interest
+Hobbies and personal interests
+Personal Information

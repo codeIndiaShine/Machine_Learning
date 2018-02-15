@@ -1,0 +1,735 @@
+hobby
+hobbies
+hobbies and interest
+
+null
+null
+
+
+Development Tools
+Feb?2016 ?May 2017
+
+PUNEET NEGI
+
+
+
+
+
+Notify Task Web
+
+XML:
+
+
+TRACS
+
+null
+
+
+
+null
+
+
+
+
+HDS-Brand: (
+	Sl. No
+
+
+Phone (+91) 9990490488,
+: Eclipse
+
+3) Print PDF
+: Eclipse
+
+: Eclipse
+HDS Ebook
+
+
+	1
+	JBOSS
+TeamConnect 3.3
+
+	 24
+Place: Delhi
+
+Flat No-B/803
+	2
+
+
+	2
+
+	 60
+
+	4
+
+
+
+
+House No# 822,
+	3
+Mobile : 9069441482
+
+
+	 6
+
+	 
+	
+
+
+	4
+
+
+
+	AngularJS 
+Admin Section
+1-214 451 8570
+Web Services
+	 12
+
+
+Leads Module
+null
+
+
+	1
+
+
+
+
+
+
+
+
+
+GSTPL
+
+
+Date:_______________
+
+
+
+
+
+
+
+
+
+
+
+Domain Knowledge:
+
+? Worked in
+
+
+
+
+ECMS
+· Title
+ 
+? Worked in
+
+
+
+Languages: 
+CURRICULUM VITAE
+
+RDBMS:      
+Phone: - +91-9632959720
+
+___________________________________________________________________________
+
+
+
+· Title
+	
+
+
+
+
+? Design and Development.
+    :
+FLIP:-
+  
+	.
+
+
+
+Resume Highlights:
+
+
+
+
+
+
+
+
+DOMAIN KNOWLEDGE:
+
+
+Title
+            :
+  
+	Role
+
+
+Environment   :
+
+
+	.
+
+
+
+.
+
+
+
+Title
+
+Oracle 10g/11g
+           :        
+Contour  
+· Development (Java/J2ee).
+Address: 
+
+
+? Framework :
+
+               
+	GE Aviation
+
+
+Email :-
+
+
+Aggregate: 72.31%.
+Language and tools
+
+
+mr_mourya@rediffmail.com 
+
+? AdHocQuery
+
+Title
+
+:           
+
+
+Aggregate: 68.00%.
+
+
+Travel agency 
+
+Environment    :     
+? Sample Login
+	Trip Optimizer
+
+
+
+	M
+
+	Role
+
+	M
+
+Aggregate: 81.18%.
+
+? Resulting
+
+
+? Worked on various
+
+.
+
+
+· Languages: 
+· Frameworks: 
+	.
+? Status Manager
+· Development (Java/J2ee).
+PFG EQuoting:-
+Development Skills Set:
+· Database: 
+? Scanning
+
+.
+
+
+null
+
+
+
+.
+· Tools:: 
+
+
+
+
+Language and tools
+
+· severs: 
+
+
+
+
+	.
+
+
+
+Sex :male
+.
+
+
+.
+
+
+	Role
+
+
+	.
+BCBSM IFP:
+.
+.
+· Development (Java/J2ee).
+
+
+
+
+
+    Duration:-
+
+Language and tools
+plot no-D1,
+
+
+
+
+
+
+    Duration:-
+
+
+
+Dell plot no-3,
+
+
+
+
+	MAT BI 
+
+	Role
+
+Shop 8-9, Nyaykhand-2,,
+
+
+	Language and tools
+
+      AmrPali village
+Phone: +91 9910319993
+
+
+
+	Smart Search
+
+
+
+
+ B-4, Sector 63, 
+	Language & Tools
+
+
+
+NOIDA - 201 301
+
+
+
+
+Office Located at:-
+
+
+
+
+
+
+1. SIP_FMS
+       	Logix Cyber Park,
+2. SIP_MT
+       	Sec-62, Noida, 201301.
+3. SIP_WAREHOUSE
+? Code reviews
+4. Crawling
+Greater Noida, 
+? Database design
+Uttar Pradesh 201310
+
+1. Administration
+? Testing
+2. Dashboard
+? Hudson configuration
+2.1 Create Workflow
+    Sec-16, Noida, 201301.
+ 
+2.1.1 Traditional
+    219, Okhla Phase-3,
+2.2.2 Advanced
+    New Delhi – 110020
+PAGE
+
+3. Offices
+3.1 Create Cabinet
+    Jaipur – 302020
+
+
+
+	.
+3.2 Create Office
+.
+.
+
+4. Collaboration
+
+
+
+
+
+? Involved in developing
+.
+.
+
+
+? Administration :
+
+
+? Dashboard:
+? Offices:
+
+           			
+	.
+.
+.
+
+
+
+
+1. Analytics
+2. Analytics Beta
+	IDE	 	:Eclipse Helios
+
+3. Campaign
+
+4. My Account
+	IDE	 	:Eclipse Helios
+5. Adminstrator
+
+	IDE	 	:Eclipse Helios
+? Worked on all modules.
+1. MARS
+2. ADC
+3. QG
+           
+
+5. Fruit and CMM
+1. Reporting
+2. Campaigning
+
+		              Deployment)
+
+	
+
+
+
+Phone: +91 9910319993
+
+
+
+
+Client		:JBU (BU)
+
+
+
+
+		 
+
+· Language- JSP, Servlet
+Description	: 	  
+
+· Designing front-end 
+
+
+
+· Development Skills Set:
+
+
+		Client		:Life Line Medicare
+	· Java Versions
+· IDE
+Description	:                
+· Server
+· 
+
+· RDBMS
+· Database Access Technique
+· Web Services
+· ESB
+
+	.
+
+
+
+	Java1.7 and 1.8
+
+Eclipse MARS,JUNO and LDS
+Sex: Male
+
+
+Windows 7,Linux Ubuntu 12.02
+Service Mix
+
+
+
+
+
+
+
+
+
+
+
+
+
+	Client Name: LDRL
+
+	Database:  MySQL, Cassandra
+
+
+
+
+
+
+	
+
+1. SIP_FMS
+2. SIP_MT
+3. SIP_WAREHOUSE
+4. Crawling
+5. Managing Crawl Data
+
+
+	
+
+
+	Database:  MySQL, Alfresco
+
+
+
+
+
+
+ 1. Administration
+ 2. Dashboard
+       2.1 Create Workflow
+	2.1.1 Traditional
+               2.2.2 Advanced
+ 3. Offices
+        3.1 Create Cabinet
+        3.2 Create Office
+ 4. Collaboration 
+
+
+
+· Involved in developing 
+· Administration : 
+· Dashboard:
+· Offices:
+
+
+
+	Client Name: Birdzi Inc
+
+	Database:  MySQL, Postgress
+
+
+
+
+
+
+1. Analytics
+                       2. Analytics Beta
+3. Campaign
+4. My Account
+5. Adminstrator
+
+
+· Worked on all modules.
+
+
+
+
+
+
+
+
+
+
+1. MARS
+2. ADC
+3. QG
+5. Fruit and CMM
+
+
+
+
+
+
+
+
+
+
+
+
+1. Reporting 
+2. Campaigning
+
+
+
+
+
+
+
+
+	
+· Full Name
+· Hobbies
+· Weakness
+· Address
+
+	
+18th November, 1987
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Curriculum Vitae
+
+<p> </p>
+AMAN VASHIST
+<a name="_GoBack"></a>
+Copy Editor:
+AMAN VASHIST
+Curriculum Vitae
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy Editor:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	Exam.
+
+	MA English
+	2015
+
+	65%
+
+	12th 
+	2009
+	66%
+
+	 10th
+	2007
+	C.B.S.E Board
+	73%
+
+
+
+
+
+
+
+Hobbies
+
+     : English and Hindi
+
+Date: 
+
+
+
+
+
+
+
+
+(Anjali Kukreti)          
+
+
+
+null
+null
+And any need for improvement.
+Role : Hr Executive
+Etc)
+3. Retention:
+Mail: ericaviju@gmail.com
+
+
+<p> </p>
+AMAN VASHIST
+<a name="_GoBack"></a>
+AMAN VASHIST

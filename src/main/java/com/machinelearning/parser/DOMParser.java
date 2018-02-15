@@ -145,12 +145,14 @@ public class DOMParser {
 	 * @return
 	 */
 	public String getText(Node node) {
-		if (null != node.childNodes() && node.childNodes().size() > 0) {
-			node = node.childNode(0);
-			getText(node);
+		String nodeForText = null;
+		while (null != node.childNodes() && node.childNodes().size() > 0) {
+			node = node.childNode(0);			
 		}
-
-		return node.toString().trim().length() < 4 || node.toString().trim().length() > 40 ? null
-				: node.toString().trim();
+		
+		nodeForText = node.toString().trim().length() < 4 || node.toString().trim().length() > 40 ? null
+					: node.toString().trim();
+		
+		return nodeForText;
 	}
 }

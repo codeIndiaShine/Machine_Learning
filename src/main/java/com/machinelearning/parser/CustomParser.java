@@ -30,25 +30,12 @@ import net.sourceforge.tess4j.TesseractException;
 
 public class CustomParser {
 
-	static File unprocessedFolder = new File("E:\\Documents\\resume_unprocessed");
-
-	static File[] files = null;
-
-	public CustomParser() {
-		if (unprocessedFolder.isDirectory()) {
-			files = unprocessedFolder.listFiles();
-		}
-	}
-
-	public File[] getFileList(){
-		return files;
-	}
+	
 	private String returnFileType(File file) throws IOException {
 		Tika tika = new Tika();
 
 		String documentType = tika.detect(file);
 
-		System.out.println("\ndocumentType :" + documentType);
 		return documentType;
 	}
 
@@ -70,14 +57,13 @@ public class CustomParser {
 		FileInputStream inputstream = new FileInputStream(file);
 
 		ParseContext context = new ParseContext();
+		
 		parser.parse(inputstream, handler, metadata, context);
-
-		System.out.println("\nmetadata :" + metadata);
-
+		
+		inputstream.close();
 		File newMetaDataFile = new File("E:\\Documents\\metadata\\metadata" + file.getName() + ".txt");
 		FileOutputStream fos = new FileOutputStream(newMetaDataFile);
 		for (String name : metadata.names()) {
-			System.out.println(name + " : " + metadata.get(name));
 			String str = name + " : " + metadata.get(name);
 
 			fos.write(str.getBytes());
@@ -85,22 +71,23 @@ public class CustomParser {
 		fos.close();
 
 		String content = null;
-		if (new CustomParser().returnFileType(file).contains("pdf")
-				|| new CustomParser().returnFileType(file).contains("jpeg")) {
-			parser = new PDFParser();
+		if (new CustomParser().returnFileType(file).contains("pdf")) {
+			/*parser = new PDFParser();
 
 			new PropertyReader("pdfParser.properties", "/parserconfiguration/");
 
 			FileInputStream fs = PropertyReader.in;
 			PDFParserConfig pdfParserConfig = new PDFParserConfig(fs);
 
-			((PDFParser) parser).setPDFParserConfig(pdfParserConfig);
+			((PDFParser) parser).setPDFParserConfig(pdfParserConfig);*/
 
 			Tesseract tesseract = new Tesseract();
 			tesseract.setLanguage("eng");
 			tesseract.setPageSegMode(2);
 			tesseract.setOcrEngineMode(2);
-
+			//tesseract.setHocr(true);
+			
+			
 			PDDocument document = PDDocument.load(file);
 			int noOfPages = document.getNumberOfPages();
 
@@ -113,6 +100,7 @@ public class CustomParser {
 			document.close();
 			content = tesseract.doOCR(file);
 
+			//fs.close();
 		} else {
 			content = handler.toString();
 		}
@@ -126,6 +114,7 @@ public class CustomParser {
 		fosContent.write(str.getBytes());
 
 		fosContent.close();
+		
 	}
 
 	/**
@@ -168,7 +157,6 @@ public class CustomParser {
 		fosContent.write(str.getBytes());
 
 		fosContent.close();
-
 	}
 
 	/**
@@ -194,7 +182,6 @@ public class CustomParser {
 
 		}
 
-		System.out.println(segmentList.size());
 		ImageIO.write(image, "JPEG", new File("E:\\Documents\\segmentedImages\\sampleResumePDFtoImage" + pageNumber
 				+ "+" + file.getName() + ".JPEG"));
 	}
